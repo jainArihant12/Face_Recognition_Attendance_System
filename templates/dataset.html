@@ -1,0 +1,64 @@
+{% extends 'dashboard.html'%}
+{% block content %}
+    <style>
+        .myButton {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+            position: absolute;
+            right:5vw;
+            top:370px;
+
+            
+          }
+          .sample_photo h1{
+            display: inline-block;
+            position: absolute;
+            right:5vw;
+            top:190px;
+            color:white;
+            font-family: 'Courier New', Courier, monospace;
+          }
+          form{
+            display: inline-block;
+
+          }
+          .sample_photo{
+            background-image: url('/static/Photo/sample.jpg');
+            background-repeat: none;
+            background-size: cover;
+            background-position: 30%;
+            height: 100vh;
+            width: 100vw;
+           
+            
+          }
+          .id-enter{
+            position: absolute;
+            right:5vw;
+            top:300px;
+            border-radius:8px;
+            height: 30px;
+            border: 2px solid black;
+            width: 180px;
+          }
+          
+    </style>
+</head>
+<body>
+    <div class="sample_photo">
+    <h1>Face Dataset Collection</h1>
+    <form action="/capture" method="post">
+      <input type="text" class="id-enter" name="student-id"  placeholder="Enter Id of Student" required>
+        <button type="submit" class="myButton">Start Collection</button>
+    </form></div>
+   
+    {% endblock %}
