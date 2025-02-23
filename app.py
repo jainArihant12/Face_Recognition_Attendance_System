@@ -51,7 +51,6 @@ def login():
     return render_template('index.html')
 
 
-
   
 
 @app.route('/register', methods =['GET', 'POST'])
@@ -155,3 +154,128 @@ def process_edit():
 def dashboard():
     
     return render_template('dashboard.html')
+
+@app.route('/dataset')
+def dataset():
+    
+    return render_template('dataset.html')
+
+
+@app.route('/capture', methods=['POST'])
+def generate_frames():
+    cap = cv2.VideoCapture(0)
+    count = 0
+    idofstudent = int(request.form['student-id'])
+    while True:
+        ret, frame = cap.read()
+
+        if face_extractor(frame) is not None:
+            count += 1
+            face = cv2.resize(face_extractor(frame), (500, 500))
+            face = cv2.cvtColor(face, cv2.COLOR_BGR2GRAY)
+
+            file_name_path = f'facephoto/user.{idofstudent}.{count}.jpg'
+            cv2.imwrite(file_name_path, face)
+
+            cv2.putText(face, str(count), (50, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
+            cv2.imshow('face cropper',face)
+        else:
+            print("Face not found (^_^)")
+            pass
+
+        if cv2.waitKey(1) == 13 or count == 100:
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()
+    print("Dataset collection complete")
+    return "dataset complete"
+    
+
+@app.route('/Train')
+def train():
+    return render_template('Train.html')
+
+@app.route('/traindone', methods=['POST'])
+def traindone():
+    trainclassifier()
+    return render_template('Train.html', message='Training completed successfully.')
+
+@app.route('/attendance')
+def attend():
+    return render_template('attendance.html')
+
+
+@app.route('/detection',methods=['POST'])
+def detection():
+
+    cap = cv2.VideoCapture(0)
+    match_found = False
+    while True:
+
+      ret, frame = cap.read()
+
+      image, face = face_detector(frame)
+    
+
+      try:
+        face = cv2.cvtColor(face, cv2.COLOR_BGR2GRAY)
+        id ,result = Model.predict(face)
+        confidence = int(100*(1-(result)/300))
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute("SELECT name FROM studetail WHERE Id = %s",(id,))
+        student_data = cursor.fetchone()
+        student_name = student_data['name']
+        print(student_name)
+        print(confidence)
+        attendance = "Absent"
+        
+        if confidence > 72:
+            cv2.putText(image,f'Name:{student_name}', (250, 450), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
+            cv2.imshow('Face Cropper', image)
+            if not match_found:
+                current_time = datetime.datetime.now()
+                date = current_time.date()
+                time = current_time.time()
+                print(date)
+                attendance = "Present"
+                cursor.execute("UPDATE studetail SET date = %s, time = %s , Attendance =%s WHERE Id = %s", (date, time,attendance,id))
+                mysql.connection.commit() 
+                match_found = True
+
+                
+           
+    
+
+        else:
+            cv2.putText(image, "Unknown", (250, 450), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 255), 2)
+            cv2.imshow('Face Cropper', image)
+
+
+      except:
+        cv2.putText(image, "Face Not Found", (250, 450), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 2)
+        cv2.imshow('Face Cropper', image)
+        pass
+
+      if cv2.waitKey(1)==13:
+        break
+
+
+    cap.release()
+    cv2.destroyAllWindows()
+    return render_template('attendance.html')
+
+@app.route('/submit_attendance', methods=['POST'])
+def submit_attendance():
+    date = request.form['date']
+    time = request.form['time']
+    # Perform any necessary processing with date and time here
+    # For example, you can store them in a database
+    
+    # Then render user.html and pass date and time as template variables
+
+    return render_template('user.html', date=date, time=time)
+
+    
+if __name__ == '__main__':
+    app.run(debug=True) 
