@@ -49,7 +49,7 @@ Link: https://youtu.be/KDqpDbOfjPM
    http://127.0.0.1:5000/
 
 ## Usage
-  
+  - **Step 0** : Login in using "rahul@gmail.com " and Password "1212" Or Register
   - **Step 1** : Go to dashboard.
   - **Step 2** : Go to Face_recognition and collect dataset(image) of each student.
   - **Step 3** :From dashboard , Go to Train section to train the images.
