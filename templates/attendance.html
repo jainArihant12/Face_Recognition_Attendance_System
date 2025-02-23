@@ -1,11 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+{% extends 'dashboard.html'%}
+{% block content %}
+
+<style>
+    .myButton {
+        background-color: #f44f02;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 10px;
+        position: relative;
+        top:-50px;
+        
+
+        
+      }
+      .sample_photo h1{
+        display: inline-block;
+        position: absolute;
+        top:80px;
+        left:auto;
+        right: auto;
+        color:white;
+        font-family: 'Courier New', Courier, monospace;
+       
+      }
+      form{
+        display: inline-block;
+
+      }
+      .sample_photo{
+        background-image: url('/static/Photo/attend.jpg');
+        background-repeat: none;
+        background-size: cover;
+        background-position: 50%;
+        height: 85vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        
+      }
+      
+</style>
 </head>
 <body>
-    
-</body>
-</html>
+<div class="sample_photo">
+<h1>Attendance Through Face Recognition</h1>
+<form action="/detection" method="post">
+    <button type="submit" class="myButton">Start Face Recognition</button>
+</form></div>
+
+<!-- date and time  -->
+
+<form action="/submit_attendance" method="post">
+  <input type="hidden" name="date" value="{{ date }}">
+  <input type="hidden" name="time" value="{{ time }}">
+  <!-- Other form fields or content -->
+  <button type="submit">Submit Attendance</button>
+</form>
+{% endblock %}

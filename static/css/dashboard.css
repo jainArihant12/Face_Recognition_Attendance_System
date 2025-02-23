@@ -169,6 +169,7 @@ header{
     }
     
 }
+
 /* end of nav bar */
 
 .dashback{
@@ -300,7 +301,7 @@ ul{
 	background-color: #ffffff;
 }
 
-/* responsive */
+/*responsive*/
 @media(max-width: 767px){
   .footer-col{
     width: 50%;
@@ -309,6 +310,9 @@ ul{
 }
 @media(max-width: 574px){
   .footer-col{
-    width:100%;
+    width: 100%;
 }
 }
+
+
+

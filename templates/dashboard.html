@@ -49,61 +49,61 @@
            <div class="block">
             <a href="{{ url_for('dataset') }}"><img class="box-img" src="{{url_for('static' , filename='Photo/face-reco.jpg') }}" alt=""></a>
             <div class="page-name"><h5>Face Recognition</h5></div>
+           </div>
+           <div class="block">
+            <a href="{{ url_for('train') }}"><img class="box-img" src="{{url_for('static' , filename='Photo/train.jpg') }}" alt=""></a>
+            <div class="page-name"><h5>Train</h5></div>
+           </div>
+           <div class="block">
+            <a href="#"><img class="box-img" src="{{url_for('static' , filename='Photo/photo.jpg') }}" alt=""></a>
+            <div class="page-name"><h5>Photo</h5></div>
+           </div>
+           <div class="block">
+            <a href="{{ url_for('attend') }}"><img class="box-img" src="{{url_for('static' , filename='Photo/attendance.jpg') }}" alt=""></a>
+            <div class="page-name"><h5>Attendance</h5></div>
+           </div>
+           <div class="block">
+            <a href="#"><img class="box-img" src="{{url_for('static' , filename='Photo/chatbot.jpg') }}" alt=""></a>
+            <div class="page-name"><h5>Chatbot</h5></div>
+           </div>
+           <div class="block">
+            <a href="#"><img class="box-img" src="{{url_for('static' , filename='Photo/help.jpg') }}" alt=""></a>
+            <div class="page-name"><h5>Help</h5></div>
+           </div>
+           <div class="block">
+            <a href="index.html"><img class="box-img" src="{{url_for('static' , filename='Photo/exit.jpg') }}" alt=""></a>
+            <div class="page-name"><h5>Exit</h5></div>
+           </div>
         </div>
-        <div class="block">
-         <a href="{{ url_for('train') }}"><img class="box-img" src="{{url_for('static' , filename='Photo/train.jpg') }}" alt=""></a>
-         <div class="page-name"><h5>Train</h5></div>
-        </div>
-        <div class="block">
-         <a href="#"><img class="box-img" src="{{url_for('static' , filename='Photo/photo.jpg') }}" alt=""></a>
-         <div class="page-name"><h5>Photo</h5></div>
-        </div>
-        <div class="block">
-         <a href="{{ url_for('attend') }}"><img class="box-img" src="{{url_for('static' , filename='Photo/attendance.jpg') }}" alt=""></a>
-         <div class="page-name"><h5>Attendance</h5></div>
-        </div>
-        <div class="block">
-         <a href="#"><img class="box-img" src="{{url_for('static' , filename='Photo/chatbot.jpg') }}" alt=""></a>
-         <div class="page-name"><h5>Chatbot</h5></div>
-        </div>
-        <div class="block">
-         <a href="#"><img class="box-img" src="{{url_for('static' , filename='Photo/help.jpg') }}" alt=""></a>
-         <div class="page-name"><h5>Help</h5></div>
-        </div>
-        <div class="block">
-         <a href="index.html"><img class="box-img" src="{{url_for('static' , filename='Photo/exit.jpg') }}" alt=""></a>
-         <div class="page-name"><h5>Exit</h5></div>
-        </div>
-     </div>
- </div>
- {% endblock %}
-<!-- Footer of website -->
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="footer-col">
-                <h4>Face Recognition</h4>
-                <ul>
-                    <li><a href="#">about us</a></li>
-                    <li><a href="#">our services</a></li>
-                    <li><a href="#">privacy policy</a></li>
-                    <li><a href="#">affiliate program</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>get help</h4>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">working</a></li>
-                    <li><a href="#">returns</a></li>
-                    <li><a href="#">attendance status</a></li>
-                    <li><a href="#">payment options</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>online</h4>
-                <ul>
-                    <li><a href="#">watch</a></li>
+    </div>
+    {% endblock %}
+    <!-- Footer of website -->
+     <footer class="footer">
+  	 <div class="container">
+  	 	<div class="row">
+  	 		<div class="footer-col">
+  	 			<h4>Face Recognition</h4>
+  	 			<ul>
+  	 				<li><a href="#">about us</a></li>
+  	 				<li><a href="#">our services</a></li>
+  	 				<li><a href="#">privacy policy</a></li>
+  	 				<li><a href="#">affiliate program</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>get help</h4>
+  	 			<ul>
+  	 				<li><a href="#">FAQ</a></li>
+  	 				<li><a href="#">working</a></li>
+  	 				<li><a href="#">returns</a></li>
+  	 				<li><a href="#">attendance status</a></li>
+  	 				<li><a href="#">payment options</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>online</h4>
+  	 			<ul>
+  	 				<li><a href="#">watch</a></li>
   	 				<li><a href="#">bag</a></li>
   	 				<li><a href="#">shoes</a></li>
   	 				<li><a href="#">dress</a></li>
@@ -122,4 +122,5 @@
   	 </div>
   </footer>
 </body>
+
 </html>
