@@ -1,0 +1,49 @@
+{% extends 'dashboard.html'%}
+{% block content %}
+<style>
+    .train_photo{
+        background-image: url('/static/Photo/training.jpg');
+        background-repeat: none;
+        background-size: cover;
+        background-position: 30%;
+        height: 80vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+       
+        
+      }
+      .myButton {
+        background-color:  #3559E0;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 10px;
+        position: relative;
+       
+        top:-40px;
+
+        
+      }
+</style>
+
+<div class="train_photo">
+<form action="/traindone" method="post"  onsubmit="showAlert()">
+    <button type="submit" class="myButton">Start Training</button>
+</form></div>
+
+<script>
+    function showAlert() {
+        setTimeout(function() {
+            alert("Training completed successfully!");
+        }, 4000);
+    }
+</script>
+{% endblock %}
